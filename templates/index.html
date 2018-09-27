@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-5">
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="card card-body">
+        <form action="{{url_for('add_contact')}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="fullname" placeholder="FullName">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="phone" placeholder="Phone">
+          </div>
+          <button class="btn btn-primary btn-block">
+            Save 
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <table class="table table-striped table-hover table-bordered table-sm bg-white">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>fullname</td>
+            <td>email</td>
+            <td>phone</td>
+            <td>Operations</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contact in contacts %}
+          <tr>
+            <td>{{contact.0}}</td>
+            <td>{{contact.1}}</td>
+            <td>{{contact.2}}</td>
+            <td>{{contact.3}}</td>
+            <td>
+              <a href="/edit/{{contact.0}}" class="btn btn-secondary">edit</a>
+              <a href="/delete/{{contact.0}}" class="btn btn-danger btn-delete">delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
