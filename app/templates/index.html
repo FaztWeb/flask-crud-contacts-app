@@ -16,7 +16,7 @@
       {% endif %}
       {% endwith %}
       <div class="card card-body">
-        <form action="{{url_for('add_contact')}}" method="POST">
+        <form action="{{url_for('contacts.add_contact')}}" method="POST">
           <div class="form-group">
             <input type="text" class="form-control" name="fullname" placeholder="FullName">
           </div>
@@ -46,13 +46,13 @@
         <tbody>
           {% for contact in contacts %}
           <tr>
-            <td>{{contact.0}}</td>
-            <td>{{contact.1}}</td>
-            <td>{{contact.2}}</td>
-            <td>{{contact.3}}</td>
+            <td>{{contact.id}}</td>
+            <td>{{contact.fullname}}</td>
+            <td>{{contact.email}}</td>
+            <td>{{contact.phone}}</td>
             <td>
-              <a href="/edit/{{contact.0}}" class="btn btn-secondary">edit</a>
-              <a href="/delete/{{contact.0}}" class="btn btn-danger btn-delete">delete</a>
+              <a href="/edit/{{contact.id}}" class="btn btn-secondary">edit</a>
+              <a href="/delete/{{contact.id}}" class="btn btn-danger btn-delete">delete</a>
             </td>
           </tr>
           {% endfor %}

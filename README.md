@@ -1,9 +1,21 @@
 # Screenshot
+
 ![](docs/screenshot.png)
 
-# install dependencies
-- pip install flask
-- pip install flask-mysqldb
+### Installation
 
-# issues
+```bash
+git clone https://github.com/FaztWeb/flask-crud-contacts-app
+cd flask-crud-contacts-app
+pip install -r requirements.txt
+python app/main.py
+```
+
+### issues
 - sudo apt-get install libmysqlclient-dev
+
+### TODO
+
+* [ ] add authentication
+* [ ] form validation
+* [ ] docker-compose
